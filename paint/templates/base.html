@@ -1,0 +1,14 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<title>Paint App</title>
+<link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
+</head>
+<body>
+	{% block content %}{% endblock %}
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<!--<script src="{% static 'js/jquery-1.8.0.min.js' %}"> </script>-->
+	<script src="{% static 'js/jscode.js' %}"> </script>
+</body>
+</html>

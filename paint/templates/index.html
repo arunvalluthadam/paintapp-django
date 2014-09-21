@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="toolbar">
+		<div id="rad">
+			<input type="checkbox" id="fill"/>Fill
+    		<input type="checkbox" id="outline" checked="checked"/>Outline
+    		<br><div id="fulname">File Name: <label id="name" ></label></div>
+    		<p><div id="thick">Size: <select id="selclr" onchange="thickness()">
+     			<option value=1 selected>2px</option>
+     			<option value=5 >6px</option>
+     			<option value=10>10px</option>
+     			<option value=12 >12px</option>
+     			<option value=14>14px</option>
+     			<option value=18 >18px</option>
+    		</select></div></p>
+		</div>
+		<div id="colors">
+			<button id="color1" class="colorcir" onclick="color('black')"></button>
+			<button id="color2" class="colorcir" onclick="color('grey')"></button>
+			<button id="color3" class="colorcir" onclick="color('white')"></button>
+			<button id="color4" class="colorcir" onclick="color('red')"></button>
+			<button id="color5" class="colorcir" onclick="color('orange')"></button>
+			<button id="color6" class="colorcir" onclick="color('yellow')"></button>
+			<button id="color7" class="colorcir" onclick="color('green')"></button>
+			<button id="color8" class="colorcir" onclick="color('blue')"></button>
+			<button id="color9" class="colorcir" onclick="color('indigo')"></button>
+			<button id="color10" class="colorcir" onclick="color('violet')"></button>
+		</div>
+	</div>
+	<div id="footbar">
+		<div id="shapset">
+			<button id="clear" class="shape" onclick="galary()" style="color: orange;">Galary</button>
+			<script>
+				function galary() {
+					document.location.href="/display/";
+				}
+			</script>
+			<button id="clear" class="shape" onclick="clears()">Clear</button>
+			<button id="circle" class="shape" onclick="curr_tool('circle')">Circle</button>
+			<button id="rectangle" class="shape" onclick="curr_tool('rectangle')">Rectangle</button>
+			<button id="line" class="shape" onclick="curr_tool('line')">Line</button>
+		</div>
+		<div id="filename">
+			<input id="fname">
+			<button id="tools" class="shape" onclick="save()">SAVE</button>
+			</div>
+		</div>
+	</div>
+
+	<canvas  id="realCanvas" width="1360" height="530" style=" background-color: #ffffff; z-index: 0"></canvas>
+	<canvas  id="tempCanvas" width="1360" height="530" style="z-index: 1"></canvas>
+{% endblock %}
+	

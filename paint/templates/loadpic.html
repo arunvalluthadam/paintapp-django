@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for post in posts %}
+        <div id="toolbar">
+            <!--<div>Pic No: {{post.id}}</div>-->
+            <label style="word-spacing: 10px;padding-right: 20px;font-size: 20px;">Name: {{post.title}}</label>
+            <input class="shape" type="button" id="{{post.data}}" value="Click to load" onclick="render_img(this.id)" />
+        </div>
+        <br><br>
+        <script>
+            var canvas = document.getElementById("print_canvas");
+            var ctx = canvas.getContext("2d");
+            
+            function render_img(filename) {
+                a = JSON.parse(filename)
+                for (var s in a) {
+                    if (a[s].length != 0) {
+                        for (var i=0; i<a[s].length; i++) {
+                            shape_draw(s, a[s][i]);
+                        }
+                    }
+                }
+            }
+            
+            
+            function shape_draw(ctool, shape){
+                var canvas = document.getElementById("print_canvas");
+                var ctx = canvas.getContext("2d");
+                if (ctool == 'rectangle'){
+                    var r_x = shape.x, r_y = shape.y, width = shape.width, height = shape.height;
+                        stroke = shape.stroke, fill = shape.fill;   
+                    ctx.beginPath();
+                    ctx.lineWidth = shape.thick;
+                    ctx.strokeStyle = shape.strk_clr;
+                    ctx.fillStyle = shape.fill_clr;
+                    if(stroke)
+                        ctx.strokeRect(r_x, r_y, width, height);
+                    if(fill) 
+                        ctx.fillRect(r_x, r_y, width, height);
+                    ctx.closePath();  
+                }
+                else if (ctool == 'circle'){
+                    var c_x = shape.x, c_y = shape.y, width = shape.radius, stroke = shape.stroke,
+                    fill = shape.fill;
+                    ctx.beginPath();
+                    ctx.lineWidth = shape.thick;
+                    ctx.strokeStyle = shape.strk_clr;
+                    ctx.fillStyle = shape.fill_clr;
+                    ctx.arc(c_x, c_y, Math.abs(width), 0 , 2 * Math.PI, false);
+                    if(stroke) 
+                        ctx.stroke();
+                    if(fill) 
+                        ctx.fill();
+                    ctx.closePath();
+                }
+                else if (ctool == 'line'){
+                    ctx.beginPath();
+                    var l_x = shape.x;
+                    var l_y = shape.y;
+                    var lend_x = shape.end_x;
+                    var lend_y = shape.end_y;
+                    ctx.lineWidth = shape.thick;
+                    ctx.strokeStyle = shape.color;
+                    ctx.moveTo(l_x, l_y);
+                    ctx.lineTo(lend_x, lend_y);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        </script>
+    {% endfor %}
+    <div id="footbar">
+		<button class="shape" onclick="home()">Home</button>
+	</div>
+    <canvas id="print_canvas" width="1360" height="530" style="position: absolute;top: 50px;">This is not working</canvas>
+    <br>
+    <script>
+        function home() {
+            document.location.href="/";
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for post in posts %}
+        <!--<form method="post">-->
+            <!--{{post.id}}-->
+            <input type="button" name=pic value={{post.title}} onclick="load(this.value)">
+            <script>
+                function home() {
+                    document.location.href="/";
+                }
+                function load(value) {
+                    document.location.href="/recent/"+value;
+                }
+            </script>
+        </form>
+    {% endfor %}
+    <p><input class="shape" type="button" value="home" onclick="home()"></p>
+{% endblock %}
