@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div id="toolbar">
+	<div id="toolbar" style="z-index: 3">
 		<div id="rad">
 			<input type="checkbox" id="fill"/>Fill
     		<input type="checkbox" id="outline" checked="checked"/>Outline
@@ -28,11 +28,11 @@
 			<button id="color10" class="colorcir" onclick="color('violet')"></button>
 		</div>
 	</div>
-	<div id="footbar">
+	<div id="footbar" style="z-index: 2">
 		<div id="shapset">
-			<button id="clear" class="shape" onclick="galary()" style="color: orange;">Galary</button>
+			<button id="clear" class="shape" onclick="gallery()" style="color: orange;">Gallery</button>
 			<script>
-				function galary() {
+				function gallery() {
 					document.location.href="/display/";
 				}
 			</script>

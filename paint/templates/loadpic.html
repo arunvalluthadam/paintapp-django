@@ -4,8 +4,8 @@
     {% for post in posts %}
         <div id="toolbar">
             <!--<div>Pic No: {{post.id}}</div>-->
-            <label style="word-spacing: 10px;padding-right: 20px;font-size: 20px;">Name: {{post.title}}</label>
-            <input class="shape" type="button" id="{{post.data}}" value="Click to load" onclick="render_img(this.id)" />
+            <label style="word-spacing: 10px;padding-right: 1100px;font-size: 20px;">Name: {{post.title}}</label>
+            <input class="shape" type="button" id="{{post.data}}" value="Load Picture" onclick="render_img(this.id)" />
         </div>
         <br><br>
         <script>
@@ -72,6 +72,7 @@
     {% endfor %}
     <div id="footbar">
 		<button class="shape" onclick="home()">Home</button>
+        <button class="shape" onclick="gallery()" style="position: absolute;left: 1275px;color: yellow;">Gallery</button>
 	</div>
     <canvas id="print_canvas" width="1360" height="530" style="position: absolute;top: 50px;">This is not working</canvas>
     <br>
@@ -79,5 +80,8 @@
         function home() {
             document.location.href="/";
         }
+        function gallery() {
+			document.location.href="/display/";
+		}
     </script>
 {% endblock %}

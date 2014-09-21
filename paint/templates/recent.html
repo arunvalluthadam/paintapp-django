@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for post in posts %}
-        <!--<form method="post">-->
-            <!--{{post.id}}-->
-            <input type="button" name=pic value={{post.title}} onclick="load(this.value)">
+    <div id="toolbar">
+		<h1 style="position: absolute; top: -8px;left: 600px;">Gallery</h2>
+	</div>
+    <div style="position: absolute;top: 100px;">
+        {% for post in posts %}
+            <input class="shape" type="button" name=pic value={{post.title}} onclick="load(this.value)" style="color: yellow;padding-bottom: 10px;padding-left: 0px;">
             <script>
                 function home() {
                     document.location.href="/";
@@ -13,7 +15,9 @@
                     document.location.href="/recent/"+value;
                 }
             </script>
-        </form>
-    {% endfor %}
-    <p><input class="shape" type="button" value="home" onclick="home()"></p>
+        {% endfor %}
+    </div>
+    <div id="footbar">
+		<input class="shape" type="button" value="home" onclick="home()">
+	</div>
 {% endblock %}
