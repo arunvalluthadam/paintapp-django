@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="toolbar">
+    <div id="toolbar" style="z-index: 2;">
 		<h1 style="position: absolute; top: -8px;left: 600px;">Gallery</h2>
 	</div>
     <div style="position: absolute;top: 100px;">
@@ -17,7 +17,7 @@
             </script>
         {% endfor %}
     </div>
-    <div id="footbar">
+    <div id="footbar" style="z-index: 1;">
 		<input class="shape" type="button" value="home" onclick="home()">
 	</div>
 {% endblock %}
